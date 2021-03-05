@@ -15,12 +15,12 @@ import java.util.stream.Collectors;
 class Exercise3 {
 
     public static String sortedAllNumbersList(List<String> num) {
-        String result = num.stream()
+        String sortedNumbers = num.stream()
                 .map(array -> array.split(", "))
                 .flatMap(Arrays::stream)
                 .sorted(Comparator.comparingInt(Integer::parseInt))
                 .collect(Collectors.joining(", "));
-        return (result);
+        return (sortedNumbers);
     }
 }
 
