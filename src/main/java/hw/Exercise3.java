@@ -1,7 +1,10 @@
 package main.java.hw;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Дан массив: ["1, 2, 0", "4, 5"]
@@ -12,14 +15,12 @@ import java.util.List;
 class Exercise3 {
 
     public static String sortedAllNumbersList(List<String> num) {
-        int[] sortedAllNumbers = num.stream()
+        String result = num.stream()
                 .map(array -> array.split(", "))
                 .flatMap(Arrays::stream)
-                .mapToInt(Integer::parseInt)
-                .sorted()
-                .toArray();
-
-        return (Arrays.toString(sortedAllNumbers));
+                .sorted(Comparator.comparingInt(Integer::parseInt))
+                .collect(Collectors.joining(", "));
+        return (result);
     }
 }
 
